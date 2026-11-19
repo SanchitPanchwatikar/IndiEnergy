@@ -1,6 +1,7 @@
 # Qwen Prompt Engineering — AuraSync delivery
 
-**Status:** Proposed coding-agent operating guide  
+> **Document control:** Version 0.2 | Status: Proposed coding-agent operating guide | Owner: CTO / prompt owner (TBD) | Last reviewed: 2026-11-20
+
 **Purpose:** Give Qwen bounded, reviewable implementation work that follows the founder backlog and architecture approvals.
 
 ## 1. Context files to read
@@ -9,8 +10,9 @@ At the start of a task, read:
 
 1. [`QWEN_IMPLEMENTATION_TASKS.md`](../../QWEN_IMPLEMENTATION_TASKS.md) — task order, gates, safety and product boundary.
 2. [`docs/README.md`](../README.md) — document index and governance.
-3. The relevant CTO, enterprise, and solution-design documents linked there.
-4. The actual source, tests, manifests, branch, and worktree before editing.
+3. [`docs/delivery/implementation-tracker.md`](../delivery/implementation-tracker.md) — authoritative status, evidence, blockers, and traceability.
+4. The [ADR log](../adr/README.md), [claims matrix](../product/claims-matrix.md), and relevant CTO, enterprise, and solution-design documents.
+5. The actual source, tests, manifests, branch, and worktree before editing.
 
 These documents are drafts. Approved ADRs and explicit founder decisions supersede proposals; unresolved decisions remain unresolved.
 
@@ -93,3 +95,15 @@ Never report “production ready,” “compliant,” “safe,” “clinically 
 Use after implementation, not instead of tests:
 
 > Review the diff for the requested task only. Check it against the acceptance criteria, approved ADRs, privacy/data boundaries, safety/claims constraints, existing conventions, and test evidence. Identify concrete defects or missing evidence; do not expand scope or claim regulatory/security approval. If there are no findings, say so and list what was not verified. Do not edit files or deploy.
+
+## 7. Session-end checklist
+
+Before ending a Qwen task/session:
+
+- [ ] Update the implementation tracker status, owner, blockers, and evidence link; do not mark Done without the acceptance criteria and approvals.
+- [ ] Report the exact task ID, changed files, commands, and test/check results (including failures).
+- [ ] Summarize decisions made versus decisions still awaiting founder/qualified approval; update the ADR only with documented evidence and approvers.
+- [ ] Inspect the final diff and confirm unrelated user changes were preserved.
+- [ ] Confirm no secrets, real user/sensor data, payment data, or sensitive details were added to source, logs, screenshots, or docs.
+- [ ] Confirm no live deployment, production migration, real user collection, or live payment occurred unless separately and explicitly authorized.
+- [ ] Name the next unblocked task or explain why work is blocked.

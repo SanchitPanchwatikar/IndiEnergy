@@ -1,6 +1,7 @@
 # Solution Design 02 — Companion App
 
-**Status:** Proposed logical design; platforms and framework TBD  
+> **Document control:** Version 0.2 | Status: Proposed logical design; platforms and framework TBD | Owner: Mobile / product lead (TBD) | Last reviewed: 2026-11-20
+
 **Goal:** A user-controlled wellness experience that remains useful without making a diagnosis or requiring cloud processing.  
 **Related:** [Implementation backlog](../../QWEN_IMPLEMENTATION_TASKS.md), [Enterprise Architecture](../architecture/enterprise-architecture.md)
 
@@ -45,12 +46,14 @@ Conceptual value (not a committed language schema):
 Measurement {
   kind, value, unit, observed_at,
   source_device, protocol_version,
+  device_firmware_version?, app_version?, adapter_version?,
+  calculation_version?,
   quality: good | limited | unavailable,
   quality_reasons[]
 }
 ```
 
-Do not persist raw sample streams by default. If a later feature requires them, require a new purpose and privacy/security review, explicit consent, retention limit, access design, and deletion test. Keep self-reported check-ins in a separate model from device measurements.
+Capture firmware/app/adapter/calculation version when available so a measurement can be interpreted and a defect reproduced. Missing version metadata is explicitly unknown; never fabricate it. Do not persist raw sample streams by default. If a later feature requires them, require a new purpose and privacy/security review, explicit consent, retention limit, access design, and deletion test. Keep self-reported check-ins in a separate model from device measurements.
 
 ## 5. Failure and safety behavior
 
@@ -67,6 +70,7 @@ Do not persist raw sample streams by default. If a later feature requires them, 
 - Adapter contract tests with simulator cases for missing, stale, malformed, out-of-order, and disconnected data.
 - Device tests on the selected hardware for fit, activity, BLE reconnect, battery impact, and supported OS versions.
 - Accessibility and usability testing for stopping sessions, understanding metrics, permission refusal, and opting out.
+- Verify F2.5 accessibility criteria across onboarding, measurement quality labels, session controls, and error states with the selected assistive technologies.
 - Validate calculations against documented device capabilities and independent reference procedures before displaying them as meaningful.
 
 ## 7. Release gate

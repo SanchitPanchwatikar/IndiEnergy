@@ -1,6 +1,7 @@
 # Solution Design 04 — Production Platform and Operations
 
-**Status:** Proposed operating model; hosting/provider/stack TBD  
+> **Document control:** Version 0.2 | Status: Proposed operating model; hosting/provider/stack TBD | Owner: CTO / operations lead (TBD) | Last reviewed: 2026-11-20
+
 **Goal:** Make any approved release supportable, privacy-conscious, observable, and reversible.  
 **Related:** [Implementation backlog](../../QWEN_IMPLEMENTATION_TASKS.md), [Enterprise Architecture](../architecture/enterprise-architecture.md)
 
@@ -63,6 +64,7 @@ Before launch, review the candidate version, test evidence, open defects, capaci
 4. Device/app connection and update support.
 5. Payment/refund/fulfillment operations, only if commerce is approved.
 6. Pause/disable release or haptics and notify users when needed.
+7. Safety-event intake, containment, escalation, investigation, and closure using the [safety-event runbook](../operations/safety-event-runbook.md).
 
 ## 7. Production acceptance criteria
 

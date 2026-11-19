@@ -1,6 +1,10 @@
 # AuraSync: Qwen implementation backlog
 
-Founder-oriented, phase-gated task list from concept validation to production. Work top to bottom; a later phase must not start until its gate is approved.
+> **Document control:** Version 0.2 | Status: Working backlog — product and architecture decisions pending | Owner: Founder / delivery lead (TBD) | Last reviewed: 2026-11-20
+
+Founder-oriented, phase-gated task list from concept validation to production. Phase gates are strict: do not start a later phase until the preceding gate is approved. Within the active phase, work one task at a time in ID order; stop and record a blocker rather than skipping to a later phase. The founder may explicitly authorize an independent task by recording the exception and rationale in the [implementation tracker](docs/delivery/implementation-tracker.md).
+
+Use the [implementation tracker](docs/delivery/implementation-tracker.md) as the authoritative source for task status, owners, evidence, blockers, and design/approval traceability. This file's checkboxes are a visual checklist only.
 
 ## Product direction and non-negotiable assumptions
 
@@ -20,6 +24,9 @@ Founder-oriented, phase-gated task list from concept validation to production. W
 5. Add focused tests for new behavior and run the narrowest relevant checks. Never mark a task done based only on code generation; include test evidence and acceptance criteria.
 6. Keep secrets out of source, logs, screenshots, and reports. Use documented local placeholders and managed secret storage in deployment.
 7. Do not proceed past a phase gate on a favorable code review alone. Gates requiring founder, user-research, clinical, legal, hardware-safety, or regulatory approval need that named approval.
+8. Update the implementation tracker when a task starts, blocks, is deferred, or meets its acceptance criteria. Link verifiable evidence; do not mark a task done based only on a code change.
+9. Record consequential choices in the [ADR log](docs/adr/README.md), and check the [claims matrix](docs/product/claims-matrix.md) before changing any user-facing product wording.
+10. Use the [safety-event runbook](docs/operations/safety-event-runbook.md) for pilot/production safety reports. It must be completed with named owners and local escalation paths before user exposure.
 
 ## Phase 0 — Founder decisions and product scope
 
@@ -46,6 +53,10 @@ Founder-oriented, phase-gated task list from concept validation to production. W
   - **Done when:** a written checklist identifies applicable requirements, required filings/tests, responsible owner, and pre-launch blockers. Do not infer approval from this backlog.
 - [ ] **F1.5 Define study and outcome plan.** If evaluating effects, specify a founder/qualified-reviewer-approved protocol with appropriate comparison/sham, recruitment, consent, adverse-event handling, endpoints, analysis, and publication/claims boundaries.
   - **Done when:** a protocol is reviewed and required ethics/oversight approvals are obtained before recruitment or data collection. Otherwise mark efficacy as unproven and do not claim it.
+- [ ] **F1.6 Validate competitors and alternatives.** Compare current products, substitutes, target segments, feature/channel, pricing, evidence quality, availability, and material limitations. Date-stamp sources and separate verified facts from vendor claims and assumptions.
+  - **Done when:** a founder-reviewed comparison identifies the most relevant alternatives and a testable differentiation hypothesis; no stale price, efficacy, or regulatory statement is presented as current fact.
+- [ ] **F1.7 Assign a data-retention owner and schedule.** Define retention/deletion rules by data category, purpose, active system, backup, and legal/operational hold; assign an accountable owner and qualified reviewer.
+  - **Done when:** the schedule names owner, trigger, duration or deletion rule, and evidence for each approved category. No real waitlist, sensor, check-in, or pilot data is collected until its schedule and notice are approved.
 
 **Phase gate 1:** Founder accepts the problem evidence, device feasibility, hazard plan, and compliance path. Any unresolved safety or legal blocker keeps the product out of user testing or sale.
 
@@ -59,6 +70,8 @@ Founder-oriented, phase-gated task list from concept validation to production. W
   - **Done when:** requirements and threat model are approved and trace to testable acceptance criteria. Default to local/minimized data until a backend is justified.
 - [ ] **F2.4 Establish engineering checks.** Configure only approved project tooling for formatting/linting, type/build checks, unit tests, dependency scanning, secret detection, and CI. Add a safe local development setup and sample environment file without secrets.
   - **Done when:** a clean checkout can run the documented checks and CI blocks merges on required failures.
+- [ ] **F2.5 Set accessibility requirements and verification.** Define the supported platforms, accessibility standards/criteria, assistive-technology coverage, and user testing needed for the site and companion experience.
+  - **Done when:** the criteria are approved and trace to onboarding, forms, measurement display, session controls, error states, and stop/opt-out interactions.
 
 **Phase gate 2:** Approved architecture, data boundaries, threat model, and repeatable CI exist before feature implementation.
 
@@ -131,7 +144,7 @@ Founder-oriented, phase-gated task list from concept validation to production. W
 - [ ] **F7.5 Run product quality checks.** Test supported OS/browser/device matrix, accessibility, localization, performance, data export/deletion, backup/restore, upgrade/rollback, and production-scale load assumptions.
   - **Done when:** release criteria are met and known issues are explicitly accepted by the founder; no unresolved critical/high security or safety defect remains.
 - [ ] **F7.6 Establish production operations.** Set up approved environments, managed secrets, least-privilege access, monitoring/alerts, uptime and support ownership, incident response, backups, restore drills, release/rollback runbooks, and dependency patch process.
-  - **Done when:** an operator other than the implementer can deploy, diagnose, restore, and roll back using the runbooks; alerts are tested without real user data.
+  - **Done when:** an operator other than the implementer can deploy, diagnose, restore, and roll back using the runbooks; alerts are tested without real user data; named safety-event owners and local escalation paths are in place and the [safety-event runbook](docs/operations/safety-event-runbook.md) is exercised.
 - [ ] **F7.7 Complete final legal and claims review.** Verify required privacy/consumer notices, terms, consent, product labels/instructions, advertising, tax/payment details, registrations, and required regulatory clearances for actual markets.
   - **Done when:** named qualified reviewers and founder record approval; missing items are explicit release blockers.
 

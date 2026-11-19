@@ -1,6 +1,7 @@
 # CTO Strategy — AuraSync
 
-**Status:** Proposed for founder review  
+> **Document control:** Version 0.2 | Status: Proposed for founder review | Owner: CTO (TBD) | Last reviewed: 2026-11-20
+
 **Scope:** Technology and execution strategy for the concept described in [the implementation backlog](../../QWEN_IMPLEMENTATION_TASKS.md). This is not a commitment to a specific stack, market, medical classification, or product effect.
 
 ## 1. Company and product thesis
@@ -27,6 +28,7 @@ The initial business question is not “Can we build all six senses?” It is: *
 - **Modular, boring engineering:** use a device abstraction and clear application boundaries; prefer the existing repo stack after inspection; do not introduce microservices without an evidenced need.
 - **Build versus buy deliberately:** buy commodity capabilities when security, privacy, market support, and lifecycle fit are acceptable; keep provider-specific code replaceable.
 - **No production by implication:** a preview, demo payment, mock OTP, or working URL does not mean the product is launch-ready.
+- **Accessible by design:** include assistive technology, cognitive load, motor access, readable measurement states, and clear stop/opt-out controls in requirements and acceptance tests.
 
 ## 4. Decision rights and accountable owners
 
@@ -53,6 +55,7 @@ Set numeric targets only after baseline research. Do not invent success threshol
 | Data quality | Signal availability and quality by device/activity | Show unavailable or low-quality data honestly |
 | Safety | Adverse reports, severity, time to triage/resolve | Any serious signal pauses rollout pending review |
 | Privacy | Consent withdrawal and deletion completion | No collection beyond approved purpose |
+| Research quality | Current alternative/competitor evidence and user differentiation hypothesis | Date-stamp sources; do not treat vendor claims as independent evidence |
 | Reliability | Crash/error rate, availability, restore and rollback success | Thresholds approved before launch |
 | Business | Cost to serve, support load, return/refund rate, waitlist interest | Do not use signups alone as product-market fit |
 
@@ -71,8 +74,11 @@ Track each as an ADR or backlog item; do not let Qwen silently decide:
 - First user segment, initial use case, supported app platforms, and whether V1 includes the companion app or only a waitlist.
 - Selected sensor/device kit, data-quality thresholds, and whether accounts/cloud sync are necessary.
 - Launch market(s), claim review, data residency/retention obligations, and required certifications.
+- Named owners and an approved retention/deletion schedule for each collected data category, including backups.
 - Commercial model, price, inventory plan, support owner, and payment provider (only if sales are approved).
 - Repository stack and hosting. Inspect the repo and obtain approval before scaffolding if it remains empty.
+
+Use the [ADR log](../adr/README.md) for consequential decisions, the [claims matrix](../product/claims-matrix.md) for public wording, and the [implementation tracker](../delivery/implementation-tracker.md) for task status and evidence. Editing this strategy alone does not approve a decision.
 
 ## 8. First 30-day execution shape
 

@@ -1,6 +1,7 @@
 # Solution Design 03 — Wearable Device and Data Boundary
 
-**Status:** Proposed; development device, protocol, sampling, and thresholds TBD  
+> **Document control:** Version 0.2 | Status: Proposed; development device, protocol, sampling, and thresholds TBD | Owner: Device / data lead (TBD) | Last reviewed: 2026-11-20
+
 **Goal:** Evaluate a wrist dev kit safely while keeping device-specific behavior and sensitive data bounded.  
 **Related:** [Implementation backlog](../../QWEN_IMPLEMENTATION_TASKS.md), [Companion App design](02-companion-app.md)
 
@@ -46,6 +47,7 @@ flowchart LR
 ```
 
 - Preserve event time and source metadata; do not assume phone receipt time equals sensor time.
+- Record firmware, app, adapter, and calculation versions when available; missing values remain unknown and must never be synthesized.
 - Validate units, plausible ranges, timestamp progression, gaps, and packet integrity using device-specific documentation.
 - Apply documented filters/calculations only after device and reference validation; version the algorithm.
 - Keep invalid/missing values explicit. Do not interpolate or smooth into a persuasive signal without a documented, validated reason.

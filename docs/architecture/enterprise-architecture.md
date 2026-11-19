@@ -1,6 +1,7 @@
 # Enterprise Architecture — AuraSync
 
-**Status:** Proposed target architecture; vendor-neutral and awaiting founder/technical approval  
+> **Document control:** Version 0.2 | Status: Proposed target architecture; awaiting founder/technical approval | Owner: Enterprise / technical architect (TBD) | Last reviewed: 2026-11-20
+
 **Architecture level:** Startup enterprise view, intentionally lean  
 **Authority:** [Qwen implementation backlog](../../QWEN_IMPLEMENTATION_TASKS.md)
 
@@ -63,15 +64,17 @@ Prefer a modular application or monolith with explicit interfaces at this stage.
 | Information | Initial classification | Default handling |
 |---|---|---|
 | Public approved product copy | Public | Version and review claims |
-| Waitlist contact and consent | Personal | Collect minimum fields, restrict access, set retention/deletion |
-| Raw sensor samples | Sensitive personal / potentially health-related | Avoid central collection by default; local processing where feasible |
-| Derived HR/HRV/signal-quality values | Sensitive personal / potentially health-related | Label as estimates, disclose purpose, restrict and delete on request |
-| Self-reported calm/check-ins | Sensitive personal | Optional, separate from sensor data, never infer missing responses |
-| Device identifiers and diagnostics | Personal/pseudonymous depending on linkage | Minimize, rotate or pseudonymize where feasible |
+| Waitlist contact and consent | Personal | Minimum fields only; no collection until notice and retention schedule are approved |
+| Raw sensor samples | Sensitive personal / potentially health-related | Avoid central collection by default; local processing where feasible; assign owner/schedule before capture |
+| Derived HR/HRV/signal-quality values | Sensitive personal / potentially health-related | Label as estimates; disclose purpose; restrict/delete; schedule by purpose |
+| Self-reported calm/check-ins | Sensitive personal | Optional, separate from sensor data, never infer missing responses; schedule separately |
+| Device identifiers and diagnostics | Personal/pseudonymous depending on linkage | Minimize/unlink where feasible; define schedule and owner |
 | Orders/payment references (future) | Personal/financially sensitive | Use an approved payment provider; do not store card data |
 | Credentials, tokens, secrets | Restricted | Managed secret storage; never commit or log |
 
 These classifications are conservative design assumptions, not legal determinations. Qualified reviewers must confirm them for the selected market.
+
+For each collected category, the accountable data owner must record purpose, system of record, access roles, retention trigger/duration or deletion rule, backup behavior, legal-hold exception, and deletion evidence in an approved schedule before collection. Qualified counsel must review it for the launch market; track this under F1.7/F2.3.
 
 ## 6. Cross-cutting architecture principles
 
@@ -83,6 +86,7 @@ These classifications are conservative design assumptions, not legal determinati
 - **Availability:** degrade safely when offline, disconnected, or sensor quality is poor; guidance remains user-controlled.
 - **Observability:** collect service health and privacy-safe operational events; analytics are separately approved.
 - **Accessibility:** keyboard/screen-reader/mobile accessible web; app controls support stopping and opting out.
+- **Decision traceability:** maintain ADRs for material choices and link task acceptance evidence in the implementation tracker.
 
 ## 7. Target-state technology view
 
