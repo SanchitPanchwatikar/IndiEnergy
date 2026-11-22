@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #121016;
+  --ink-soft: #1d1a24;
+  --ink-line: #2f2a38;
+  --cream: #f6f1e7;
+  --paper: #fcf9f3;
+  --sand: #ede4d3;
+  --amber: #e8a33d;
+  --clay: #d9826a;
+  --clay-ink: #a0502e;
+  --sage: #93b4a2;
+  --muted: #5f5868;
+  --muted-light: #a49caf;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-line: var(--ink-line);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-amber: var(--amber);
+  --color-clay: var(--clay);
+  --color-clay-ink: var(--clay-ink);
+  --color-sage: var(--sage);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia,
+    ui-serif, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--amber) 35%, transparent);
+  color: var(--ink);
+}
+
+:focus-visible {
+  /* clay-ink, not clay: 5.4:1 on paper, 5.1:1 on cream, 4.5:1 on sand and
+     3.3:1 on ink — clears the 3:1 non-text minimum on every surface. */
+  outline: 2px solid var(--clay-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.aurora {
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(
+      60% 80% at 16% 6%,
+      color-mix(in srgb, var(--amber) 24%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      52% 72% at 84% 0%,
+      color-mix(in srgb, var(--clay) 22%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      62% 90% at 62% 104%,
+      color-mix(in srgb, var(--sage) 16%, transparent),
+      transparent 64%
+    ),
+    linear-gradient(180deg, #15121c 0%, #100e15 100%);
+}
+
+.slow-spin {
+  animation: aura-spin 96s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.slow-spin-reverse {
+  animation: aura-spin 150s linear infinite reverse;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes aura-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
