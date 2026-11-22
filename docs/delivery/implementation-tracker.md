@@ -1,6 +1,6 @@
 # AuraSync Implementation Tracker
 
-> **Document control:** Version 0.1 | Status: Active register — all tasks not started | Owner: Delivery lead (TBD) | Last reviewed: 2026-11-20
+> **Document control:** Version 0.2 | Status: Active register — P0 decisions proposed, P1 site in progress | Owner: Delivery lead (TBD) | Last reviewed: 2026-11-21
 
 This is the authoritative status, ownership, evidence, blocker, and traceability register for [`QWEN_IMPLEMENTATION_TASKS.md`](../../QWEN_IMPLEMENTATION_TASKS.md). The checkboxes in the backlog are a convenience only; update this register when work starts or finishes.
 
@@ -17,10 +17,10 @@ This is the authoritative status, ownership, evidence, blocker, and traceability
 
 | Task | Status | Owner | Evidence / approval | Blocker / dependency | Design trace |
 |---|---|---|---|---|---|
-| [F0.1](../../QWEN_IMPLEMENTATION_TASKS.md) — Choose first customer/use case | Not started | Unassigned | — | — | [CTO strategy](../strategy/cto-strategy.md) |
-| [F0.2](../../QWEN_IMPLEMENTATION_TASKS.md) — Approve V1 feature boundary | Not started | Unassigned | — | — | [CTO strategy](../strategy/cto-strategy.md), [enterprise architecture](../architecture/enterprise-architecture.md) |
-| [F0.3](../../QWEN_IMPLEMENTATION_TASKS.md) — Approve claims and terminology | Not started | Unassigned | — | — | [claims matrix](../product/claims-matrix.md) |
-| [F0.4](../../QWEN_IMPLEMENTATION_TASKS.md) — Decide launch geography and commercial model | Not started | Unassigned | — | — | [CTO strategy](../strategy/cto-strategy.md), [commerce gate](../solution-design/04-production-operations.md) |
+| [F0.1](../../QWEN_IMPLEMENTATION_TASKS.md) — Choose first customer/use case | In progress | Founder | [ADR-0008](../adr/0008-first-customer-and-job.md) (Proposed) | Founder sign-off and interview evidence pending | [CTO strategy](../strategy/cto-strategy.md) |
+| [F0.2](../../QWEN_IMPLEMENTATION_TASKS.md) — Approve V1 feature boundary | In progress | Founder | [ADR-0009](../adr/0009-v1-feature-boundary.md) (Proposed) | Founder sign-off pending | [CTO strategy](../strategy/cto-strategy.md), [enterprise architecture](../architecture/enterprise-architecture.md) |
+| [F0.3](../../QWEN_IMPLEMENTATION_TASKS.md) — Approve claims and terminology | In progress | Founder | [ADR-0010](../adr/0010-public-claims-ceiling.md) (Proposed); site copy written to concept-only ceiling | Qualified claims review pending | [claims matrix](../product/claims-matrix.md) |
+| [F0.4](../../QWEN_IMPLEMENTATION_TASKS.md) — Decide launch geography and commercial model | In progress | Founder | [ADR-0011](../adr/0011-launch-market-and-commercial-model.md) (Proposed) | Qualified legal review pending | [CTO strategy](../strategy/cto-strategy.md), [commerce gate](../solution-design/04-production-operations.md) |
 | [F1.1](../../QWEN_IMPLEMENTATION_TASKS.md) — Test problem and user need | Not started | Unassigned | — | F0.1 | [CTO strategy](../strategy/cto-strategy.md) |
 | [F1.2](../../QWEN_IMPLEMENTATION_TASKS.md) — Verify sensor/device feasibility | Not started | Unassigned | — | F0.2 | [device and data](../solution-design/03-device-and-data.md) |
 | [F1.3](../../QWEN_IMPLEMENTATION_TASKS.md) — Define hazards and foreseeable misuse | Not started | Unassigned | — | F0.2 | [safety-event runbook](../operations/safety-event-runbook.md), [device and data](../solution-design/03-device-and-data.md) |
@@ -33,7 +33,7 @@ This is the authoritative status, ownership, evidence, blocker, and traceability
 | [F2.3](../../QWEN_IMPLEMENTATION_TASKS.md) — Define privacy/security requirements | Not started | Unassigned | — | F1.4, F1.7 | [enterprise architecture](../architecture/enterprise-architecture.md), ADR-0003 |
 | [F2.4](../../QWEN_IMPLEMENTATION_TASKS.md) — Establish engineering checks | Not started | Unassigned | — | F2.1, F2.2 | [production operations](../solution-design/04-production-operations.md) |
 | [F2.5](../../QWEN_IMPLEMENTATION_TASKS.md) — Set accessibility requirements | Not started | Unassigned | — | F0.1, F2.1 | [pre-launch experience](../solution-design/01-prelaunch-experience.md), [companion app](../solution-design/02-companion-app.md) |
-| [F3.1](../../QWEN_IMPLEMENTATION_TASKS.md) — Align site with approved V1/claims | Not started | Unassigned | — | Phase gate 2, F0.3 | [claims matrix](../product/claims-matrix.md), [pre-launch experience](../solution-design/01-prelaunch-experience.md) |
+| [F3.1](../../QWEN_IMPLEMENTATION_TASKS.md) — Align site with approved V1/claims | In progress | Founder / web engineering | Next.js scaffold, tokens, CI workflow, and home/how-it-works/status pages (working tree); [copy audit](../product/website-copy-register.md) maps every block to the matrix — no unapproved assertion, 2 accuracy items open | F0.3 approval and copy sign-off | [claims matrix](../product/claims-matrix.md), [pre-launch experience](../solution-design/01-prelaunch-experience.md), [ADR-0012](../adr/0012-website-and-prototype-stack.md) |
 | [F3.2](../../QWEN_IMPLEMENTATION_TASKS.md) — Implement waitlist flow | Not started | Unassigned | — | F1.7, F2.3, F3.1 | [pre-launch experience](../solution-design/01-prelaunch-experience.md) |
 | [F3.3](../../QWEN_IMPLEMENTATION_TASKS.md) — Add public-site operational basics | Not started | Unassigned | — | F2.5, F3.1 | [pre-launch experience](../solution-design/01-prelaunch-experience.md) |
 | [F3.4](../../QWEN_IMPLEMENTATION_TASKS.md) — Deploy preview | Not started | Unassigned | — | F2.4, F3.1–F3.3 | [production operations](../solution-design/04-production-operations.md) |
