@@ -23,6 +23,10 @@ This is a review register, not permission to publish. A claim becomes **Approved
 | C-005 | “Responds to human energy” or “transfers energy into your body.” | Unsupported mechanism | Not a validated product mechanism | Prohibited | — | N/A |
 | C-006 | “Detects anxiety/depression,” “predicts burnout,” or “treats a condition.” | Diagnostic / treatment / clinical claim | Out of scope for the wellness MVP; do not publish or implement as a product capability | Prohibited | — | N/A |
 
+## Website copy mapping
+
+The P1 website copy is audited block by block against this matrix in the [website copy register](website-copy-register.md). That audit found no assertion requiring an unapproved claim: measurement copy maps to C-001, breathing copy to C-002, and C-005/C-006 wording appears only inside negations. The register does not approve any row; C-001, C-003, and C-004 remain Evidence needed and C-002 remains Proposed.
+
 ## Approval record requirements
 
 For each claim approved, record:
