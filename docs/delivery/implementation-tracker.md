@@ -1,6 +1,6 @@
 # AuraSync Implementation Tracker
 
-> **Document control:** Version 0.2 | Status: Active register — P0 decisions proposed, P1 site in progress | Owner: Delivery lead (TBD) | Last reviewed: 2026-11-21
+> **Document control:** Version 0.3 | Status: Active register — P0 decisions proposed, P1 site in progress | Owner: Delivery lead (TBD) | Last reviewed: 2026-11-23
 
 This is the authoritative status, ownership, evidence, blocker, and traceability register for [`QWEN_IMPLEMENTATION_TASKS.md`](../../QWEN_IMPLEMENTATION_TASKS.md). The checkboxes in the backlog are a convenience only; update this register when work starts or finishes.
 
@@ -33,7 +33,7 @@ This is the authoritative status, ownership, evidence, blocker, and traceability
 | [F2.3](../../QWEN_IMPLEMENTATION_TASKS.md) — Define privacy/security requirements | Not started | Unassigned | — | F1.4, F1.7 | [enterprise architecture](../architecture/enterprise-architecture.md), ADR-0003 |
 | [F2.4](../../QWEN_IMPLEMENTATION_TASKS.md) — Establish engineering checks | Not started | Unassigned | — | F2.1, F2.2 | [production operations](../solution-design/04-production-operations.md) |
 | [F2.5](../../QWEN_IMPLEMENTATION_TASKS.md) — Set accessibility requirements | Not started | Unassigned | — | F0.1, F2.1 | [pre-launch experience](../solution-design/01-prelaunch-experience.md), [companion app](../solution-design/02-companion-app.md) |
-| [F3.1](../../QWEN_IMPLEMENTATION_TASKS.md) — Align site with approved V1/claims | In progress | Founder / web engineering | Next.js scaffold, tokens, CI workflow, and home/how-it-works/status pages (working tree); [copy audit](../product/website-copy-register.md) maps every block to the matrix — no unapproved assertion, 2 accuracy items open | F0.3 approval and copy sign-off | [claims matrix](../product/claims-matrix.md), [pre-launch experience](../solution-design/01-prelaunch-experience.md), [ADR-0012](../adr/0012-website-and-prototype-stack.md) |
+| [F3.1](../../QWEN_IMPLEMENTATION_TASKS.md) — Align site with approved V1/claims | In progress | Founder / web engineering | Next.js scaffold, tokens, CI workflow, and home/how-it-works/status pages, committed and pushed to `main` at `69b3e74` with CI passing (run 44993803451); [copy audit](../product/website-copy-register.md) maps every block to the matrix — no unapproved assertion, 2 accuracy items open | F0.3 approval and copy sign-off | [claims matrix](../product/claims-matrix.md), [pre-launch experience](../solution-design/01-prelaunch-experience.md), [ADR-0012](../adr/0012-website-and-prototype-stack.md) |
 | [F3.2](../../QWEN_IMPLEMENTATION_TASKS.md) — Implement waitlist flow | Not started | Unassigned | — | F1.7, F2.3, F3.1 | [pre-launch experience](../solution-design/01-prelaunch-experience.md) |
 | [F3.3](../../QWEN_IMPLEMENTATION_TASKS.md) — Add public-site operational basics | Not started | Unassigned | — | F2.5, F3.1 | [pre-launch experience](../solution-design/01-prelaunch-experience.md) |
 | [F3.4](../../QWEN_IMPLEMENTATION_TASKS.md) — Deploy preview | Not started | Unassigned | — | F2.4, F3.1–F3.3 | [production operations](../solution-design/04-production-operations.md) |

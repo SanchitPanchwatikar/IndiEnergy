@@ -1,6 +1,6 @@
 # ADR-0012: Website and prototype technology baseline
 
-> **Document control:** Version 0.1 | Status: Proposed | Decision owner: Founder / CTO | Approver(s): Founder and technical lead | Date: 2026-11-21
+> **Document control:** Version 0.2 | Status: Proposed | Decision owner: Founder / CTO | Approver(s): Founder and technical lead | Date: 2026-11-21 | Last updated: 2026-11-23
 
 ## Related work
 
@@ -12,7 +12,7 @@
 
 The repository had no application code. P1 requires a public site with design tokens, CI, and three content pages. P3–P4 require a phone app and a device adapter. The stack must be the least complex option that covers both, while keeping the site static and data-free until a waitlist is approved.
 
-**Verified:** scaffold created on 2026-11-21 with Next.js 16.4.6, React 19.3.1, TypeScript 5.9, and Tailwind CSS 4.3. The GitHub Actions workflow is **configured** to run `npm ci`, typecheck, lint, and build; those commands passed locally on 2026-11-21, but the workflow has **not yet executed** on the repository (nothing has been pushed), so there is no CI run to cite. No runtime data collection, accounts, database, or third-party scripts are present.
+**Verified:** scaffold created on 2026-11-21 with Next.js 16.4.6, React 19.3.1, TypeScript 5.9, and Tailwind CSS 4.3. The GitHub Actions workflow runs `npm ci`, typecheck, lint, and build; those commands passed locally on 2026-11-21, and the workflow has since **executed and passed** in CI on commit `69b3e74` (2026-11-23, run 44993803451), so the pipeline is verified rather than merely configured. No runtime data collection, accounts, database, or third-party scripts are present.
 
 ## Decision drivers
 
@@ -44,7 +44,7 @@ The repository had no application code. P1 requires a public site with design to
 | Companion app | Expo / React Native + TypeScript | One codebase for iOS and Android |
 | App storage | Local SQLite, no account by default | Export and deletion are required features |
 | Device | One development kit behind a typed adapter, plus a deterministic simulator | Vendor SDK confined to one module |
-| CI | GitHub Actions: `npm ci`, typecheck, lint, build | Configured but not yet executed in CI; no test suite yet; add focused tests with app logic |
+| CI | GitHub Actions: `npm ci`, typecheck, lint, build | Executed and passing on `69b3e74` (run 44993803451); no test suite yet; add focused tests with app logic |
 | Analytics | None | Requires separate approval and notice |
 
 **Conditions:** hosting selection is not made by this ADR; no secrets in the repository; no analytics or tracking scripts; no demo authentication, OTP, payment, or inventory code; the site must build from a clean checkout with `npm ci`.
@@ -56,7 +56,7 @@ The repository had no application code. P1 requires a public site with design to
 - Website, app, and tokens share one language and one review path.
 - Static pages keep hosting cheap and the privacy surface small.
 - A server route remains available for an approved waitlist.
-- The CI workflow is in place to block type, lint, and build regressions once changes are pushed.
+- The CI workflow blocks type, lint, and build regressions on pushes to `main`; its first run, on `69b3e74`, passed.
 
 ### Negative / trade-offs
 
@@ -84,7 +84,7 @@ The repository had no application code. P1 requires a public site with design to
 
 - Implementation owner: Web/app engineering
 - Acceptance criteria: clean checkout runs `npm ci`, `npm run typecheck`, `npm run lint`, and `npm run build`; pages are static; no personal data is collected; tokens are documented in `app/globals.css`.
-- Verification evidence: local `npm ci`, `npm run typecheck`, `npm run lint`, and `npm run build` output from 2026-11-21; preview review against supported viewports. A CI run is **not** yet available — the workflow is configured, not executed.
+- Verification evidence: local `npm ci`, `npm run typecheck`, `npm run lint`, and `npm run build` output from 2026-11-21; CI run [44993803451](https://github.com/SanchitPanchwatikar/IndiEnergy/actions/runs/44993803451) passed on `69b3e74` on 2026-11-23 (`npm ci`, typecheck, lint, build); preview review against supported viewports.
 - Backlog tracker row: F2.4 (checks established); F3.1 (site implementation in progress).
 
 ## Revisit triggers

@@ -1,13 +1,13 @@
 # Website Copy Register — Claims Matrix Mapping
 
-> **Document control:** Version 0.1 | Status: Draft audit — no claim approved | Owner: Founder / product copy owner | Last reviewed: 2026-11-21
+> **Document control:** Version 0.2 | Status: Draft audit — no claim approved | Owner: Founder / product copy owner | Last reviewed: 2026-11-21 (audit date)
 
 This register maps the public copy on the P1 website to the [claims matrix](claims-matrix.md), as required by [ADR-0010](../adr/0010-public-claims-ceiling.md) ("every public claim must map to a claims-matrix row"). It is an audit record, not an approval. No claim in the matrix has an evidence link, an approver, or a market recorded, so **no benefit, outcome, diagnostic, or measurement claim is approved for publication**.
 
 ## Scope and method
 
 - **Pages audited:** `/` (home), `/how-it-works`, `/concept-status`, `/privacy`, `/terms`.
-- **State audited:** the working tree on 2026-11-21, before commit and before any deployment. Nothing has been pushed or published.
+- **State audited:** the working tree on 2026-11-21, before commit and before any deployment. At audit time nothing had been pushed or published; the work has since been committed and pushed to `main` (`69b3e74`, CI passing) and remains undeployed.
 - **Ceiling applied:** ADR-0010 Option A — concept-only factual description, explicit non-claims, C-002-type feature description, and C-001-type measurement description with a quality caveat. Benefit language (C-003) is excluded entirely.
 - **Method:** each block of claims-bearing copy was read on the page and mapped to a matrix row, to "non-claim", or to "no claim" (governance/status/navigation text). Copy was also scanned for the terms `energy, detect, diagnose, treat, cure, prevent, stress, anxiety, depression, burnout, calm, proven, clinical, reduce, improve, relieve, benefit, guarantee, track, monitor, measure`. Every hit was then classified as an assertion, a negation, or a stated limitation.
 
