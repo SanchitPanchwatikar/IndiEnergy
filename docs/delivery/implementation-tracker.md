@@ -1,6 +1,6 @@
 # AuraSync Implementation Tracker
 
-> **Document control:** Version 0.3 | Status: Active register — P0 decisions proposed, P1 site in progress | Owner: Delivery lead (TBD) | Last reviewed: 2026-11-23
+> **Document control:** Version 0.4 | Status: Active register — P0 decisions proposed, P1 site in progress, five unapproved external drafts recorded | Owner: Delivery lead (TBD) | Last reviewed: 2026-11-26
 
 This is the authoritative status, ownership, evidence, blocker, and traceability register for [`QWEN_IMPLEMENTATION_TASKS.md`](../../QWEN_IMPLEMENTATION_TASKS.md). The checkboxes in the backlog are a convenience only; update this register when work starts or finishes.
 
@@ -62,3 +62,23 @@ This is the authoritative status, ownership, evidence, blocker, and traceability
 | [F8.2](../../QWEN_IMPLEMENTATION_TASKS.md) — Launch to approved small cohort | Not started | Unassigned | — | F8.1 | [production operations](../solution-design/04-production-operations.md), [safety-event runbook](../operations/safety-event-runbook.md) |
 | [F8.3](../../QWEN_IMPLEMENTATION_TASKS.md) — Expand availability deliberately | Not started | Unassigned | — | F8.2 | [CTO strategy](../strategy/cto-strategy.md) |
 | [F8.4](../../QWEN_IMPLEMENTATION_TASKS.md) — Operate and improve | Not started | Unassigned | — | F8.2 | [production operations](../solution-design/04-production-operations.md), [safety-event runbook](../operations/safety-event-runbook.md) |
+
+## Unapproved external inputs
+
+On 2026-11-26 the five HEW solution-design drafts below were imported verbatim (each with only a repository-status header added). They are **not approved**, they are not tasks in the table above, and nothing in them is scheduled work. The register records them so the imported set and the conflicts it raises are visible, not because any part of it has been adopted.
+
+Rules for these rows:
+
+- No draft may be cited as design trace for a task in the table above until the conflict it depends on is settled by an ADR.
+- Status stays **Deferred** until the founder records the decision and, where stated, qualified review.
+- Approved decisions are recorded in the [ADR log](../adr/README.md) with this repository's ADR-0001…ADR-0012 numbering, not the drafts' ADR-001…ADR-014 numbering.
+- The complete conflict list, with both sides of each disagreement, is [docs/README.md § Open conflicts](../README.md#open-conflicts-in-the-imported-hew-drafts).
+
+| Imported document | Status | Owner | Conflicts with | Decision needed |
+|---|---|---|---|---|
+| [SDD-01 wrist unit](../solution-design/sdd-01-wrist-unit.md) — hardware and firmware, W-Lite vs W-Thermal | Deferred — unapproved external input | Founder | Thermal channel (D-2, W-Thermal, hazards H-01/H-02) vs [ADR-0009](../adr/0009-v1-feature-boundary.md) exclusion of heaters, thermal actuators and light therapy from V1; HEW naming vs AuraSync and C-005 in the [claims matrix](../product/claims-matrix.md) | Whether thermal hardware is in or out of V1 (D-2), and any hardware scope change recorded as an ADR; claimants' approval of any resulting hardware claims |
+| [SDD-03 cloud and data platform](../solution-design/sdd-03-cloud-data-platform.md) — AWS reference, regional cells, ingestion, OTA, deletion | Deferred — unapproved external input | Founder | AWS stack (ECS Fargate, Aurora, S3, Kinesis, Cognito, Terraform, `ap-south-1`) vs hosting TBD in [ADR-0012](../adr/0012-website-and-prototype-stack.md); cloud accounts, sync, data lake and research raw capture as baseline vs the local-first V1 posture | Hosting and provider decision (ADR-0012, F2.2) and the accounts/cloud-sync decision (ADR-0005, F4.5), taken separately from this draft |
+| [SDD-04 closed-loop engine](../solution-design/sdd-04-closed-loop-engine.md) — ARM state, interventions I-01…I-08, rule policy, decision log | Deferred — unapproved external input | Founder | Thermal interventions I-03/I-04 vs [ADR-0009](../adr/0009-v1-feature-boundary.md); claims implied by its reason strings vs the [claims matrix](../product/claims-matrix.md) and [ADR-0010](../adr/0010-public-claims-ceiling.md) | Feature boundary sign-off (F0.2) and claims/terminology approval (F0.3), before any rule or reason string enters the product |
+| [SDD-05 security, privacy, safety and compliance](../solution-design/sdd-05-security-privacy-compliance.md) — STRIDE, consent matrix, DPIA, hazards H-01…H-11, proposed ADR-013/ADR-014 | Deferred — unapproved external input | Founder | Proposed ADR-013 (tighten-only remote limits) and ADR-014 (signed kill switch) reuse IDs already in the [ADR log](../adr/README.md); its safety and privacy requirements presuppose SDD-01/SDD-03 scope | Renumbering and adoption of the two proposals as ADRs; qualified legal, privacy and safety review before its controls or hazards are relied on (F1.3, F2.3) |
+| [SDD-06 validation and pilot system](../solution-design/sdd-06-validation-pilot-system.md) — crossover vs parallel design, yoked sham, randomisation, adverse-event workflow, gate G2 rules | Deferred — unapproved external input | Founder | Designs a pilot system, not an approved protocol, and assumes the SDD-03 cloud and thermal channels above; the repository's safety, privacy and ethics gates are unsigned | Study and outcome plan ownership (F1.5) plus ethics, biostatistics and clinical-advisor sign-off; no study starts on this draft alone |
+
