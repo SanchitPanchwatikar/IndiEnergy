@@ -1,6 +1,6 @@
 # AuraSync architecture and delivery documents
 
-> **Document control:** Version 0.3 | Status: Index | Owner: Delivery lead (TBD) | Last reviewed: 2026-11-26
+> **Document control:** Version 0.4 | Status: Index | Owner: Delivery lead (TBD) | Last reviewed: 2026-11-27
 
 These are **proposed, unapproved design documents** based on [the Qwen implementation backlog](../QWEN_IMPLEMENTATION_TASKS.md). The repository currently contains no application implementation, so these documents avoid selecting a programming stack, cloud, device, payment provider, or regulatory classification as a settled fact.
 
@@ -37,15 +37,17 @@ These are **proposed, unapproved design documents** based on [the Qwen implement
 
 ## Open conflicts in the imported HEW drafts
 
-The five SDD drafts imported under `solution-design/` are an external HEW design set, copied unedited apart from a repository-status header. They are **not approved** and they disagree with decisions already recorded here. None of the conflicts below is resolved by importing the drafts:
+The five SDD drafts imported under `solution-design/` are an external HEW design set, copied unedited apart from a repository-status header. They are **not approved** and they disagree with decisions already recorded here. None of the conflicts below is resolved by importing the drafts.
 
-| Conflict | Imported drafts say | This repository records |
-|---|---|---|
-| Product name | HEW, "Human Energy Wearable" | AuraSync throughout the site and documents; "energy" transfer claims are prohibited (C-005 in the [claims matrix](product/claims-matrix.md)) |
-| Thermal channel | Warm/cool actuation is designed in full (D-2, W-Thermal, I-03/I-04, hazards H-01/H-02) | [ADR-0009](adr/0009-v1-feature-boundary.md) excludes heaters, thermal actuators and light therapy from V1 |
-| Hosting and stack | AWS reference with ECS Fargate, Aurora, S3, Kinesis, Cognito, Terraform and `ap-south-1` | Hosting is TBD under [ADR-0012](adr/0012-website-and-prototype-stack.md); nothing here commits a cloud provider |
-| Data posture | Accounts, cloud sync, a data lake and research raw capture are baseline | V1 is local-first with an optional, approved backend only for a demonstrated need |
-| ADR numbering | ADR-001…ADR-014, including ADR-013 (tighten-only remote limits) and ADR-014 (signed kill switch) | The [ADR log](adr/README.md) uses ADR-0001…ADR-0012; the drafts' IDs collide and are not registered decisions |
-| Missing parents | Every draft cites `00-README.md`, `01-cto-technology-strategy.md`, `02-enterprise-architecture.md` and SDD-02 | `00-README.md` and SDD-02 are not in this repository; the strategy and enterprise-architecture imports are still pending, so the [current strategy](strategy/cto-strategy.md) and [current architecture](architecture/enterprise-architecture.md) remain authoritative |
+**This table is the single source of truth for these conflicts.** It carries each conflict's stable ID (OC-1…OC-6), both sides of the disagreement and the decision it needs. The [implementation tracker](delivery/implementation-tracker.md) and the drafts' own status headers cite these IDs and link here rather than restating them, so a decision is recorded once — in this table's owning ADR — and the references cannot drift. When a decision lands, update the row here and the tracker needs no edit.
 
-Each item needs a founder decision recorded as an ADR before any draft is treated as the plan or implemented. Marketing, app strings and reason templates in the drafts stay subject to the [claims matrix](product/claims-matrix.md) and [ADR-0010](adr/0010-public-claims-ceiling.md).
+| ID | Conflict | Imported drafts say | This repository records | Decision needed |
+|---|---|---|---|---|
+| OC-1 | Product name | HEW, "Human Energy Wearable" | AuraSync throughout the site and documents; "energy" transfer claims are prohibited (C-005 in the [claims matrix](product/claims-matrix.md)) | Naming and terminology approval (F0.3), any rename recorded as an ADR |
+| OC-2 | Thermal channel | Warm/cool actuation is designed in full (D-2, W-Thermal, I-03/I-04, hazards H-01/H-02) | [ADR-0009](adr/0009-v1-feature-boundary.md) excludes heaters, thermal actuators and light therapy from V1 | Whether thermal hardware is in or out of V1 (D-2, F0.2), with qualified hardware safety review of any change |
+| OC-3 | Hosting and stack | AWS reference with ECS Fargate, Aurora, S3, Kinesis, Cognito, Terraform and `ap-south-1` | Hosting is TBD under [ADR-0012](adr/0012-website-and-prototype-stack.md); nothing here commits a cloud provider | Provider, region and stack decision (ADR-0012, F2.2), taken independently of this draft |
+| OC-4 | Data posture | Accounts, cloud sync, a data lake and research raw capture are baseline | V1 is local-first with an optional, approved backend only for a demonstrated need | Accounts and cloud-sync decision (ADR-0005, F4.5) plus privacy review of any data-lake or raw-capture use |
+| OC-5 | ADR numbering | ADR-001…ADR-014, including ADR-013 (tighten-only remote limits) and ADR-014 (signed kill switch) | The [ADR log](adr/README.md) uses ADR-0001…ADR-0012; the drafts' IDs collide and are not registered decisions | Renumber the two proposals; adopt them only by logging new ADRs in the [ADR log](adr/README.md) |
+| OC-6 | Missing parents | Every draft cites `00-README.md`, `01-cto-technology-strategy.md`, `02-enterprise-architecture.md` and SDD-02 | `00-README.md` and SDD-02 are not in this repository; the strategy and enterprise-architecture imports are still pending, so the [current strategy](strategy/cto-strategy.md) and [current architecture](architecture/enterprise-architecture.md) remain authoritative | Import the parents and SDD-02, or amend the drafts to stop citing them |
+
+Every OC item needs a founder decision recorded as an ADR before any draft is treated as the plan or implemented. Marketing, app strings and reason templates in the drafts stay subject to the [claims matrix](product/claims-matrix.md) and [ADR-0010](adr/0010-public-claims-ceiling.md).
